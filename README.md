@@ -23,3 +23,31 @@ The testbench verifies the FIR filter design by applying a series of input sampl
 - The FIR filter module implements the 3-tap FIR filter with given coefficients.
 - The testbench provides a clock signal with a frequency of 50 kHz and applies a series of input samples to the FIR filter.
 - The output of the FIR filter can be observed to verify the correctness of the filter implementation.
+
+
+
+# IIR Filter RTL Design and Testbench
+
+## IIR Filter Module
+
+The following RTL design describes a 3-tap Infinite Impulse Response (IIR) filter. The design uses fixed-point arithmetic with coefficients represented in Q1.15 format. The clock frequency used for the design is 50 kHz, which is suitable for processing audio signals with a maximum frequency of 20 kHz.
+
+### IIR Filter Difference Equation
+The IIR filter output is computed as:
+\[ y[n] = b0 \times \text{Data\_IN}[n] + b1 \times \text{Data\_IN}[n-1] - a1 \times \text{Data\_OUT}[n-1] \]
+
+### Coefficients
+- \( b0 = 1.00 \) (Q1.15 format: 0x1000)
+- \( b1 = 0.75 \) (Q1.15 format: 0x0CCC)
+- \( a1 = -0.75 \) (Q1.15 format: 0xF334)
+
+## Testbench
+
+The testbench verifies the IIR filter design by applying a series of input samples and observing the output. The clock frequency is set to 50 kHz to meet the requirement for audio signal processing.
+
+
+### Explanation
+
+- The IIR filter module implements the 3-tap IIR filter with given coefficients.
+- The testbench provides a clock signal with a frequency of 50 kHz and applies a series of input samples to the IIR filter.
+- The output of the IIR filter can be observed to verify the correctness of the filter implementation.
